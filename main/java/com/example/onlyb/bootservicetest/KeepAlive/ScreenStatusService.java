@@ -6,7 +6,10 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.onlyb.bootservicetest.Service.BackgroundService;
+
 import static com.example.onlyb.bootservicetest.KeepAlive.KeepAliveActivity.isKeepAliveRunning;
+import static com.example.onlyb.bootservicetest.Service.BackgroundService.isBackgroundRunning;
 
 public class ScreenStatusService extends Service {
 
@@ -15,6 +18,13 @@ public class ScreenStatusService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (isBackgroundRunning == false) {
+            Intent bgService = new Intent(ScreenStatusService.this, BackgroundService.class);
+            startService(bgService);
+            Log.d("ScreenStatusService", "BgService Restarted");
+        }
+
         new ScreenStatusListener(this).begin(new ScreenStatusListener.ScreenStateListener() {
 
             @Override

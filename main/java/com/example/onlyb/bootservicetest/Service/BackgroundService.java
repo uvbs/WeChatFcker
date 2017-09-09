@@ -9,6 +9,9 @@ import com.example.onlyb.bootservicetest.KeepAlive.ScreenStatusService;
 import static com.example.onlyb.bootservicetest.KeepAlive.ScreenStatusService.isScreenStatusCheck;
 
 public class BackgroundService extends Service {
+
+    public final static boolean isBackgroundRunning = false;
+
     public BackgroundService() {
     }
 
