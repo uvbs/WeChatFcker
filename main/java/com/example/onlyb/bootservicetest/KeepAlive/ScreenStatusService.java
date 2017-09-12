@@ -56,6 +56,8 @@ public class ScreenStatusService extends Service {
 
     @Override
     public void onDestroy() {
-
+        Intent intent = new Intent("com.example.onlyb.bootservicetest.destroy"); //注意改成新包名
+        sendBroadcast(intent);
+        super.onDestroy();
     }
 }

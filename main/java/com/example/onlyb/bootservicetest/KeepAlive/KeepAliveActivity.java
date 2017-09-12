@@ -16,9 +16,10 @@ public class KeepAliveActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
+        super.onCreate(savedInstanceState);
         Log.d("KeepAlive", "KeepAliveActivity -> onCreated");
+        //生成1像素活动
         Window window = getWindow();
         window.setGravity(Gravity.LEFT | Gravity.TOP);
         WindowManager.LayoutParams params = new WindowManager.LayoutParams();

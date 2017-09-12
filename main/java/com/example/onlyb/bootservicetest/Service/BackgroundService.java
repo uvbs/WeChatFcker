@@ -10,7 +10,7 @@ import static com.example.onlyb.bootservicetest.KeepAlive.ScreenStatusService.is
 
 public class BackgroundService extends Service {
 
-    public final static boolean isBackgroundRunning = false;
+    public static boolean isBackgroundRunning = false;
 
     public BackgroundService() {
     }
@@ -23,10 +23,18 @@ public class BackgroundService extends Service {
             Intent screenStatusService = new Intent(BackgroundService.this, ScreenStatusService.class);
             startService(screenStatusService);
         }
+        isBackgroundRunning = true;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        /*new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //可能需要在这里处理耗时逻辑
+            }
+        }).start();*/
+
         return START_STICKY;
     }
 
@@ -38,6 +46,8 @@ public class BackgroundService extends Service {
 
     @Override
     public void onDestroy() {
+        Intent intent = new Intent("com.example.onlyb.bootservicetest.destroy"); //注意改成新包名
+        sendBroadcast(intent);
         super.onDestroy();
     }
 }

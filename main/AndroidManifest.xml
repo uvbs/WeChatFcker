@@ -21,6 +21,8 @@
             android:exported="true">
             <intent-filter android:priority="950">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.example.onlyb.bootservicetest.destroy" />
             </intent-filter>
         </receiver>
 
